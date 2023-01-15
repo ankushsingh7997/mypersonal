@@ -3,6 +3,7 @@ const model=require('../models/cryptomodel')
 
 
 const myapi=async (req,res)=>{
+    try{
     
     
     let result= JSON.parse(req.mydata)
@@ -17,5 +18,8 @@ const myapi=async (req,res)=>{
     
 
    return res.send({data:create})
+    }
+    catch(err)
+    {return res.status(500).send({status:false,message:err.message})}
 }
 module.exports={myapi}

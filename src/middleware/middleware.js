@@ -1,6 +1,7 @@
 var request = require('request');
 
 const myFunction=(req,res,next)=>{
+    try{
     
 var options = {
   'method': 'GET',
@@ -18,4 +19,6 @@ request(options, function (error, response) {
   
   next()
 })}
+catch(err){return res.status(500).send({status:false,message:err.message})}}
+
 module.exports={myFunction}
